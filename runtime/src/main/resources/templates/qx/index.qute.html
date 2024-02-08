@@ -1,0 +1,34 @@
+{@org.cthul.qxadmin.data.QxTable table}
+{@org.cthul.qxadmin.data.QxMeta meta}
+{@org.cthul.qxadmin.data.QxView view}
+{#QxPage}
+{#fragment id=content}
+    <h2>
+        {view.label}
+    </h2>
+    <div>
+        <button class="ok" style="color: var(--accent)" onclick="openNew()" >＋ new</button>
+    </div>
+    <div id="table-content" hx-target="this" hx-swap="outerHTML" hx-get="{meta.self}" hx-trigger="load">
+        loading...
+    </div>
+
+    <dialog id="editor" hx-trigger="">
+        <h1>placeholder</h1>
+    </dialog>
+
+    <script>
+        function openEdit(id) {
+            htmx.ajax('GET', '{meta.self}/' + id + '/edit', { target: '#editor' }).then(() => {
+                htmx.find('#editor').showModal();
+            });
+        }
+        function openNew() {
+            htmx.ajax('GET', '{meta.self}/new', { target: '#editor' }).then(() => {
+                htmx.find('#editor').showModal();
+            });
+        }
+    </script>
+    <br>
+{/fragment}
+{/QxPage}

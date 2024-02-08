@@ -1,0 +1,22 @@
+{@boolean hx}
+{#if !hx}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>QxAdmin</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/qx/missing.min.css">
+    </head>
+    <body>
+        <div class="sidebar-layout" hx-boost="true">
+            {#QxNav}{/QxNav}
+{/if}
+            <main id="content" class="" style="max-width: var(--full-width); width: auto">
+                {#insert /}
+            </main>
+{#if !hx}
+        </div>
+    <script src="/qx/htmx.min.js"></script>
+    </body>
+</html>
+{/if}

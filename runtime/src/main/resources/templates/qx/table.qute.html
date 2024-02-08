@@ -1,0 +1,30 @@
+{@org.cthul.qxadmin.data.QxTable table}
+{@org.cthul.qxadmin.data.QxMeta meta}
+
+{#fragment content}
+<table id="table-content">
+    <thead>
+        <tr>
+            {#for label in table.columnLabels}
+            <th>{label}</th>
+            {/for}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {#for entity in table.rows}
+            <tr id="table-row-{entity.id}">
+{#fragment row}
+                {#for cell in entity.properties}
+                    <td>{cell.formattedValue}</td>
+                {/for}
+                <td>
+                    <button class="iconbutton info" style="color: var(--accent)" onclick="openEdit({entity.id})" >✎</button>
+                    <button class="iconbutton bad" style="color: var(--accent)" hx-delete="{meta.self}/{entity.id}" hx-target="#table-content" >✖</button>
+                </td>
+{/fragment}
+            </tr>
+        {/for}
+    </tbody>
+</table>
+{/fragment}

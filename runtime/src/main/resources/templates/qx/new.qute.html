@@ -1,0 +1,19 @@
+{@org.cthul.qxadmin.data.QxEntity entity}
+{@org.cthul.qxadmin.data.QxView view}
+{@org.cthul.qxadmin.data.QxMeta meta}
+
+{#let properties = entity.properties}
+<form class="table rows" hx-post="{meta.home}/{view.path}" hx-target="#table-content" hx-on--after-request="htmx.closest(this, 'dialog').close()" >
+    {#for property in properties}
+        {#if !property.readOnly}
+            <p>
+            <label for="{property.label}">{property.label}</label>
+            <input id="{property.label}" name="{property.label}" value="{property.formattedValue}">
+            </p>
+        {/if}
+    {/for}
+    <p>
+        <span></span>
+        <button type="submit" class="float:right" >create</button>
+    </p>
+</form>

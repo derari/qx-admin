@@ -1,0 +1,20 @@
+{@org.cthul.qxadmin.data.QxTable table}
+{@org.cthul.qxadmin.data.QxMeta meta}
+{!{#QxPage}!}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        QX Admin Dev Ui
+    </div>
+    <div class="panel-body">
+        <div id="table-content" hx-target="this" hx-swap="outerHTML" hx-newRepository="{meta.self}" hx-trigger="load">
+            loading...
+            {!<input name="number" type="hidden" value="{data.getFilter("number")}"/>!}
+            {!<input name="direction" type="hidden" value="{data.getFilter("direction")}"/>!}
+        </div>
+    {!<div id="pages" hx-target="this" hx-swap="outerHTML" hx-newRepository="cdrs" hx-trigger="load">!}
+    {!loading...!}
+    {!<input name="page" type="hidden" value="{data.page}"/>!}
+    {!</div>!}
+    </div>
+</div>
+{!{/QxPage}!}

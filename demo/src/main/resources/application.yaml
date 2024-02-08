@@ -1,0 +1,37 @@
+quarkus:
+  log:
+    level: DEBUG
+    category:
+      com.sun:
+        level: INFO
+      io.netty:
+        level: INFO
+      io.smallrye:
+        level: INFO
+      io.quarkus:
+        level: INFO
+      java:
+        level: INFO
+      org.aesh.readline:
+        level: INFO
+      org.apache.http:
+        level: INFO
+      org.eclipse.jetty:
+        level: INFO
+      org.hibernate:
+        level: INFO
+      org.testcontainers:
+        level: INFO
+      com.github.dockerjava:
+        level: INFO
+  hibernate-orm:
+    physical-naming-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    database:
+      generation:
+       ~: update
+       create-schemas: true
+
+'%prod':
+  quarkus:
+    log:
+      level: INFO

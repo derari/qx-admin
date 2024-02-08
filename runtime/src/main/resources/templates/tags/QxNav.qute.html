@@ -1,0 +1,11 @@
+{@org.cthul.qxadmin.data.QxMeta meta}
+{@org.cthul.qxadmin.data.QxSchema schema}
+<header class="" hx-boost="true" hx-target="#content">
+    <nav>
+        <ul role="list">
+        {#each schema.views.values}
+            <li><a href="{meta.home}/{it.path}">{it.label}</a></li>
+        {/each}
+        </ul>
+    </nav>
+</header>
